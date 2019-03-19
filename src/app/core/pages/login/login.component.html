@@ -1,0 +1,22 @@
+<div style="background-image: url('assets/images/banner2.jpg'); padding-top: 50px; padding-bottom: 50px;">
+    <div class="container card-box" style="padding-bottom: 10px">
+      <h1 class="rt-48">
+        Sign in
+      </h1>
+      <form ngNativeValidate #form >
+        <div class="col-md-12 col-sm-12" >
+          <span class="yf-cap pill ">Username or Email*</span>
+          <input (focus)="showError = false" autocomplete="on" [(ngModel)]="usernameOrEmail" id="usernameOrEmail" name="usernameOrEmail" class="form-control yf-input" type="text" required/>
+          <span class="yf-cap pill ">Password*</span>
+          <input (focus)="showError = false" [(ngModel)]="password" id="password" name="password" class="form-control yf-input" type="password" required/>
+          <small [@myAnimation] class="text-danger" *ngIf="showError">The username or password you entered is incorrect, please try again.</small>
+        </div>
+        <button name="submit" class="btn yf-submit" type="submit" (click)="form.checkValidity()? login() : null">
+          Sign In
+        </button>
+      </form>
+      <a href="signUp">
+        <small>Dont have an account? Sign up here</small>
+      </a>
+    </div>
+</div>

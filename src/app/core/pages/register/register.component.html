@@ -1,0 +1,26 @@
+<div style="background-image: url('assets/images/banner2.jpg'); padding-top: 50px; padding-bottom: 50px;">
+  <div class="container card-box" style="padding-bottom: 10px">
+    <h1 class="rt-48">
+      Sign Up
+    </h1>
+    <form ngNativeValidate #form >
+      <div class="col-md-12 col-sm-12" >
+        <span class="yf-cap pill ">Name*</span>
+        <input (focus)="showError = false" autocomplete="on" [(ngModel)]="name" id="usernameOrEmail" name="name" class="form-control yf-input" type="text" required/>
+        <span class="yf-cap pill ">Username*</span>
+        <input (focus)="showError = false" autocomplete="on" [(ngModel)]="username" id="username" name="username" class="form-control yf-input" type="text" required/>
+        <span class="yf-cap pill ">Email*</span>
+        <input (focus)="showError = false" autocomplete="on" [(ngModel)]="email" id="email" name="email" class="form-control yf-input" type="email" required/>
+        <span class="yf-cap pill ">Password*</span>
+        <input placeholder="At least 6 chars" pattern=".{6,}" (focus)="showError = false" [(ngModel)]="password" id="password" name="password" class="form-control yf-input" type="password" required/>
+        <small [@myAnimation] class="text-danger" *ngIf="showError">Error occurred, username/email already taken.</small>
+      </div>
+      <button name="submit" class="btn yf-submit" type="submit" (click)="form.checkValidity()? register() : null">
+        Sign Up
+      </button>
+    </form>
+    <a href="signIn">
+      <small>Already have an account? Sign in here</small>
+    </a>
+  </div>
+</div>

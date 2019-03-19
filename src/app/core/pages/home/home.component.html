@@ -1,0 +1,33 @@
+<section class="blog-page">
+  <div class="container">
+    <div class="blog-posts">
+      <div class="row blog-post" *ngFor="let q of questions">
+        <a href="#" class="blog-post-author col-md-2 text-center">
+          <i class="desaturate" style="background-image: url(../../../../assets/images/knuck.jpg);"></i>
+          <span>
+            <b>{{q.author.username}}</b><br>{{q.author.desc}}
+          </span>
+        </a>
+        <div class="col-md-1">
+          <div class="row justify-content-center">
+            <a href="" (click)="false"><i class="far fa-arrow-alt-circle-up fa-2x"></i></a>
+          </div>
+          <div class="row justify-content-center">
+            <b>{{q.upVotes - q.downVotes}}</b>
+          </div>
+          <div class="row justify-content-center fa-2x">
+            <a href="" (click)="false"><i class="far fa-arrow-alt-circle-down "></i></a>
+          </div>
+        </div>
+        <div class="blog-post-summary col-md-9">
+          <h6 class="cap-22"><a href="#">{{q.title}}</a></h6>
+          <span>28/11/2018</span>
+          <p class="txt-16">{{q.txt}}<br></p>
+          <div class="text-right">
+            <a class="post-link" href="#">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
