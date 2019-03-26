@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {QuestionService} from '../../services/question.service';
 import {Question} from '../../models/Question';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import {Question} from '../../models/Question';
 export class HomeComponent implements OnInit {
 
   questions: Question[];
-  constructor( private questionService: QuestionService) {
+  constructor( private questionService: QuestionService, private router: Router) {
   }
   ngOnInit() {
     this.questionService.getAllQuestions().subscribe(

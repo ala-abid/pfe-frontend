@@ -15,4 +15,8 @@ export class QuestionService {
     return this.http.get<Question[]>(apiBaseUrl + apiAllQsPath);
   }
 
+  getQuestion(id: string): Observable<Question> {
+    return this.http.get<Question>(apiBaseUrl + '/question/' + id);
+  }
+
 }

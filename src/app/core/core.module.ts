@@ -7,13 +7,16 @@ import { HeaderComponent } from './header/header.component';
 import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from '../shared/shared.module';
 import { HomeComponent } from './pages/home/home.component';
+import { QuestionComponent } from './pages/question/question.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, FooterComponent, HeaderComponent, HomeComponent],
+  declarations: [LoginComponent, RegisterComponent, FooterComponent, HeaderComponent, HomeComponent, QuestionComponent],
   imports: [
     CommonModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     HeaderComponent,
