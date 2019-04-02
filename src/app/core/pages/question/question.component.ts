@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {QuestionService} from '../../services/question.service';
 import {Question} from '../../models/Question';
+import {Answer} from '../../models/Answer';
 
 @Component({
   selector: 'app-question',
@@ -30,5 +31,14 @@ export class QuestionComponent implements OnInit {
       this.replyToAnswerNo = myIndex;
     }
     console.log(this.replyToAnswerNo);
+  }
+  addAnswer(qId: string, content: string) {
+    const a = new Answer();
+    a.txt = content;
+    console.log(a);
+    this.questionService.addAsnwer(qId, a).subscribe(
+      (data: any) => {console.log(data); },
+      (err: any) => {console.log('ERROR ERROR'); }
+    );
   }
 }

@@ -1,4 +1,4 @@
-export interface Question {
+export class Question {
   id: string;
   title: string;
   txt: string;

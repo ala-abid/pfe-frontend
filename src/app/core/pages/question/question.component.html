@@ -33,7 +33,7 @@
         <div *ngFor="let a of q.answers; index as myIndex" class="container answer">
           <span><a class="link" href="#">{{a.author.username}}</a> &nbsp; - &nbsp; 25 minutes ago</span><br><br>
           <p>{{a.txt}}</p>
-          <span>2 &nbsp;
+          <span> 2 &nbsp;
             <a class="not-link" (click)="false;" href="" ><i class="fas fa-chevron-up"></i>&nbsp;upvote&nbsp;</a>
             <a class="not-link" (click)="false;" href="" ><i class="fas fa-chevron-down"></i>&nbsp;downvote&nbsp;</a>
             <a class="not-link" (click)="showReply(myIndex); false;" href="" ><i class="fas fa-comment-dots"></i>&nbsp;reply</a>
@@ -57,7 +57,7 @@
         </h1>
         <br>
         <textarea class="answer-area" placeholder="Text here..."></textarea>
-        <button name="submit" class="btn yf-submit" type="submit" (click)="form.checkValidity()? login() : null">
+        <button name="submit" class="btn yf-submit" type="submit" (click)="addAnswer(q.id, 'just trying something out')">
           Submit
         </button>
       </div>

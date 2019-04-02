@@ -10,3 +10,24 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
+.search-box{
+  margin-top: 2px;
+  margin-left: 30%;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  border: #4e555b solid 1px;
+  background: white;
+}
+#filtersubmit {
+  position: relative;
+  z-index: 1;
+  left: -25px;
+  top: 7px;
+  color: #7B7B7B;
+  cursor:pointer;
+  width: 0;
+}
+.search-box:focus{
+  border: #d83431 solid 1px;
+}
