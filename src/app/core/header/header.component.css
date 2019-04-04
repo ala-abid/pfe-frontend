@@ -12,22 +12,23 @@
 }
 .search-box{
   margin-top: 2px;
-  margin-left: 30%;
+  margin-right: 20%;
   height: 30px;
   padding: 5px;
   border-radius: 5px;
   border: #4e555b solid 1px;
   background: white;
-}
-#filtersubmit {
-  position: relative;
-  z-index: 1;
-  left: -25px;
-  top: 7px;
-  color: #7B7B7B;
-  cursor:pointer;
-  width: 0;
+  width: 300px;
+  max-width: 300px;
 }
 .search-box:focus{
   border: #d83431 solid 1px;
+}
+
+.option{
+  font-size: 12px;
+  height: 25px;
+}
+.option:hover{
+  text-decoration: underline;
 }

@@ -1,0 +1,44 @@
+<div class="blog-page container">
+  <div class="blog-posts">
+    <mat-spinner class="spinner" color="warn" *ngIf="!jiraIssue"></mat-spinner>
+    <div class="row blog-post" *ngIf="jiraIssue">
+      <a href="#" class="blog-post-author col-md-2 text-center">
+        <i style="background-image: url(../../../../assets/images/knuck.jpg);"></i>
+        <span>
+            <b>{{jiraIssue.assignee}}</b> <br><br><b>Project:</b>{{jiraIssue.projectName}}
+        </span>
+      </a>
+      <div class="col-md-1">
+        <div class="row justify-content-center">
+          <a class="link" href="" (click)="false"><i class="far fa-arrow-alt-circle-up fa-2x vote-arrow"></i></a>
+        </div>
+        <div class="row justify-content-center">
+          <b>2 ST</b>
+        </div>
+        <div class="row justify-content-center">
+          <a class="link" href="" (click)="false"><i class="far fa-arrow-alt-circle-down fa-2x vote-arrow"></i></a>
+        </div>
+      </div>
+
+
+      <div class="blog-post-full col-md-9">
+        <h6 class="cap-22">{{jiraIssue.summary}}</h6>
+        <span>{{jiraIssue.creationDate| date :'dd-MMM-yyyy'}}</span>
+        <p class="txt-16">{{jiraIssue.description}}<br></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div *ngIf="jiraIssue" class="col-md-9">
+        <hr>
+        <div *ngFor="let c of jiraIssue.comments; index as myIndex" class="container answer">
+          <span><a class="link" href="#">{{c.author}}</a> &nbsp; - &nbsp;{{c.creationDate| date :'dd-MMM-yyyy'}}</span><br><br>
+          <p>{{c.txt}}</p>
+          <hr>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,14 @@
+.answer{
+  border-left: #d83431 3px solid;
+}
+
+.link{
+  font-weight: bold;
+  color: darkslategrey;
+}
+
+.spinner{
+  margin-left: 50%;
+  margin-top: 100px;
+}
+

@@ -1,12 +1,14 @@
-<a  href="#">
+<a href="#">
   <img class="header-logo" src="../assets/images/logo-small.png">
 </a><br>
 
 <nav *ngIf="showBar()" class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: white;">
   <!--<a class="navbar-brand " href="#">-->
-    <!--<img src="../assets/images/logo-small.png">-->
+  <!--<img src="../assets/images/logo-small.png">-->
   <!--</a>-->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
           aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 20px">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -22,7 +24,8 @@
         <a class="menu-link dropdown-item" href="#">Users</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="dropdown-toggle menu-link dropdown-item" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="dropdown-toggle menu-link dropdown-item" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
           Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -31,7 +34,17 @@
           <a class="dropdown-item" href="#">Settings</a>
         </div>
       </li>
+
     </ul>
+    <input type="text" class="search-box" placeholder="Search" aria-label="Number"
+           matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option" class="option" [routerLink]="['/jira', option[1]]">
+        {{option[0]}}
+      </mat-option>
+    </mat-autocomplete>
   </div>
 </nav>
+
+
 

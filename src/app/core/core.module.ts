@@ -9,18 +9,30 @@ import {SharedModule} from '../shared/shared.module';
 import { HomeComponent } from './pages/home/home.component';
 import { QuestionComponent } from './pages/question/question.component';
 import {RouterModule} from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
+import { JiraIssueComponent } from './pages/jira-issue/jira-issue.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, FooterComponent, HeaderComponent, HomeComponent, QuestionComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    FooterComponent,
+    HeaderComponent,
+    HomeComponent,
+    QuestionComponent,
+    JiraIssueComponent
+  ],
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    SharedModule,
   ],
   exports: [
     HeaderComponent,
     FooterComponent
-  ]
+  ],
 })
 export class CoreModule { }
