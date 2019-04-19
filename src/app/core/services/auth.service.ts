@@ -9,8 +9,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(usernameOrEmail: string, password: string) {
-    return this.http.post(apiBaseUrl + apiLoginPath, {usernameOrEmail, password});
+  login(username: string, password: string) {
+    return this.http.post(apiBaseUrl + apiLoginPath, {username, password});
   }
 
   register(name: string, username: string, email: string, password: string) {

@@ -11,6 +11,12 @@ import { QuestionComponent } from './pages/question/question.component';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import { JiraIssueComponent } from './pages/jira-issue/jira-issue.component';
+import { AskQuestionComponent } from './pages/ask-question/ask-question.component';
+import { AllUsersComponent } from './pages/all-users/all-users.component';
+import { AdvancedSearchComponent } from './pages/advanced-search/advanced-search.component';
+import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
+import { MyGroupsComponent } from './pages/my-groups/my-groups.component';
+import { GroupComponent } from './pages/group/group.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { JiraIssueComponent } from './pages/jira-issue/jira-issue.component';
     HeaderComponent,
     HomeComponent,
     QuestionComponent,
-    JiraIssueComponent
+    JiraIssueComponent,
+    AskQuestionComponent,
+    AllUsersComponent,
+    AdvancedSearchComponent,
+    AccountSettingsComponent,
+    MyGroupsComponent,
+    GroupComponent,
   ],
   imports: [
     ReactiveFormsModule,

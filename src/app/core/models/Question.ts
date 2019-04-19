@@ -1,35 +1,17 @@
+import {User} from './User';
+import {Answer} from './Answer';
+import {Tag} from './Tag';
+
 export class Question {
-  id: string;
+  id: number;
   title: string;
   txt: string;
-  // TODO add tags
   createdAt: string;
   updatedAt: string;
-  author: {
-    username: string;
-    desc: string;
-  };
+  author: User;
   upVotes: number;
   downVotes: number;
-  isSolved: boolean;
-  answers: [
-    {
-      id: string;
-      txt: string;
-      author: {
-        username: string;
-        desc: string;
-      }
-      replies: [
-        {
-          id: string;
-          txt: string;
-          author: {
-            username: string;
-            desc: string;
-          }
-        }
-      ]
-    }
-  ];
+  solved: boolean;
+  answers: Answer[];
+  tags: Tag[];
 }

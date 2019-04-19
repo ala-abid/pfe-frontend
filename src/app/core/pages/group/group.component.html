@@ -1,0 +1,69 @@
+<div class="blog-page container">
+  <div class="blog-posts">
+    <h1>
+      <span class="cap-lg pill-lg">{{group.name}}:</span>
+    </h1><br>
+    <div class="row blog-post">
+      <mat-tab-group>
+        <!--        Group1-->
+        <!--        <mat-tab label="Questions">-->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>list</mat-icon>
+            Questions
+          </ng-template>
+          <br>
+          <div *ngFor="let q of questions" style="width: 98%">
+            <div class="row">
+              <a class="blog-post-author col-md-2 text-center" href="#">
+                <i style="background-image: url(../../../../assets/images/knuck.jpg);"></i>
+                <span>
+                  <b>{{q.author.username}}</b><br>author desc
+                </span>
+              </a>
+              <div class="col-md-1">
+                <div class="row justify-content-center">
+                  <a (click)="false" href="" class="link"><i class="far fa-arrow-alt-circle-up fa-2x vote-arrow"></i></a>
+                </div>
+                <div class="row justify-content-center">
+                  <b>{{q.upVotes - q.downVotes}}</b>
+                </div>
+                <div class="row justify-content-center">
+                  <a (click)="false" href="" class="link"><i class="far fa-arrow-alt-circle-down fa-2x vote-arrow"></i></a>
+                </div>
+              </div>
+              <div class="blog-post-summary col-md-9">
+                <h6 class="cap-22"><a href="#">{{q.title}}</a></h6>
+                <span>{{q.createdAt| date :'dd-MMM-yyyy'}}</span>
+                <p class="txt-16">{{q.txt}}<br></p>
+                <div class="text-right">
+                  <a [routerLink]="['/question', q.id]" class="post-link">Read more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <!--        Group2-->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>group</mat-icon>
+            Members
+          </ng-template>
+          <br>
+
+        </mat-tab>
+        <!--        Group3-->
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>settings</mat-icon>
+            Settings
+          </ng-template>
+          <br>
+
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

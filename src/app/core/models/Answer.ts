@@ -1,9 +1,14 @@
+import {User} from './User';
+import {Reply} from './Reply';
+
 export class Answer {
-  id: string;
+  id: number;
   txt: string;
-  author: {
-    username: string;
-    desc: string;
-  };
-  replies: [];
+  createdAt: string;
+  updatedAt: string;
+  author: User;
+  upVotes: string;
+  downVotes: string;
+  solution: string;
+  replies: Reply[];
 }

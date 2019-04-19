@@ -15,13 +15,16 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown" style="margin-left: 20px">
     <ul class="navbar-nav mx-auto">
       <li class="nav-item active">
-        <a class="menu-link dropdown-item" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="menu-link dropdown-item" routerLink="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="menu-link dropdown-item" href="#">Tags</a>
+        <a class="menu-link dropdown-item" routerLink="/tags">Tags</a>
       </li>
       <li class="nav-item">
-        <a class="menu-link dropdown-item" href="#">Users</a>
+        <a class="menu-link dropdown-item" routerLink="/groups">Groups</a>
+      </li>
+      <li class="nav-item">
+        <a class="menu-link dropdown-item" routerLink="/users">Users</a>
       </li>
       <li class="nav-item dropdown">
         <a class="dropdown-toggle menu-link dropdown-item" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -31,18 +34,30 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="#" (click)="logOut()">Log out</a>
           <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" [routerLink]="['/settings']">Settings</a>
         </div>
       </li>
 
     </ul>
     <input type="text" class="search-box" placeholder="Search" aria-label="Number"
            matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <input type="submit" value="Search" [routerLink]="['/search', myControl.value]">
     <mat-autocomplete #auto="matAutocomplete">
+      <mat-optgroup [label]="'Jira'">
       <mat-option *ngFor="let option of options" [value]="option" class="option" [routerLink]="['/jira', option[1]]">
         {{option[0]}}
       </mat-option>
+      </mat-optgroup>
+      <mat-optgroup [label]="'Forum Questions'">
+        <mat-option *ngFor="let option of forumSearchOptions" [value]="option" class="option"
+                    [routerLink]="['/question', option.question_id ? option.question_id : option.id]">
+          {{option.question_id ? option.txt : option.title}}
+        </mat-option>
+      </mat-optgroup>
     </mat-autocomplete>
+    <div class="text-right pull-right" >
+      <a class="post-link" [routerLink]="['/askQuestion']" style="width: 150px">ask question</a>
+    </div>
   </div>
 </nav>
 

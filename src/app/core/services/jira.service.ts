@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Question} from '../models/Question';
 import {Observable} from 'rxjs';
 import {JiraIssue} from '../models/JiraIssue';
 

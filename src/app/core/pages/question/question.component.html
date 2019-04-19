@@ -1,63 +1,74 @@
 <div class="blog-page container">
   <div class="blog-posts">
-    <div class="row blog-post" *ngIf="q">
+    <div class="row blog-post" *ngIf="q && currentVote">
       <a href="#" class="blog-post-author col-md-2 text-center">
         <i style="background-image: url(../../../../assets/images/knuck.jpg);"></i>
         <span>
-            <b>{{q.author.username}}</b> <br> {{q.author.desc}}
+            <b>{{q.author.username}}</b> <br> author desc
         </span>
       </a>
       <div class="col-md-1">
         <div class="row justify-content-center">
-          <a class="link" href="" (click)="false"><i class="far fa-arrow-alt-circle-up fa-2x vote-arrow"></i></a>
+          <a class="link" href="" (click)="false">
+            <i class="far fa-arrow-alt-circle-up fa-2x vote-arrow" (click)="vote('up')"
+               [style.color]="currentVote.upDown === 'up' ? '#d83431' : null"></i>
+          </a>
         </div>
         <div class="row justify-content-center">
-          <b>{{q.upVotes - q.downVotes}}</b>
+          <b>{{totalVotes}}</b>
         </div>
         <div class="row justify-content-center">
-          <a class="link" href="" (click)="false"><i class="far fa-arrow-alt-circle-down fa-2x vote-arrow"></i></a>
+          <a class="link" href="" (click)="false">
+            <i class="far fa-arrow-alt-circle-down fa-2x vote-arrow" (click)="vote('down')"
+               [style.color]="currentVote.upDown === 'down' ? '#d83431' : null"></i>
+          </a>
         </div>
       </div>
 
 
       <div class="blog-post-full col-md-9">
         <h6 class="cap-22">{{q.title}}</h6>
-        <span>28/11/2018 -- this is static</span>
+        <span>{{q.createdAt| date :'dd-MMM-yyyy'}}</span>
         <p class="txt-16">{{q.txt}}<br></p>
+        <mat-chip-list>
+          <mat-chip *ngFor="let tag of q.tags">{{tag.name}}</mat-chip>
+        </mat-chip-list>
       </div>
     </div>
     <div class="row">
       <div class="col-md-3"></div>
       <div *ngIf="q" class="col-md-9">
-        <hr>
         <div *ngFor="let a of q.answers; index as myIndex" class="container answer">
-          <span><a class="link" href="#">{{a.author.username}}</a> &nbsp; - &nbsp; 25 minutes ago</span><br><br>
+          <span><a class="link" href="#">{{a.author.username}}</a> &nbsp; {{a.createdAt| date :'dd-MMM-yyyy'}}</span><br><br>
           <p>{{a.txt}}</p>
-          <span> 2 &nbsp;
-            <a class="not-link" (click)="false;" href="" ><i class="fas fa-chevron-up"></i>&nbsp;upvote&nbsp;</a>
-            <a class="not-link" (click)="false;" href="" ><i class="fas fa-chevron-down"></i>&nbsp;downvote&nbsp;</a>
-            <a class="not-link" (click)="showReply(myIndex); false;" href="" ><i class="fas fa-comment-dots"></i>&nbsp;reply</a>
+          <span *ngIf="answerVotes[myIndex]"> {{answerVotes[myIndex].totalVotes}} &nbsp;
+            <a class="not-link" (click)="voteAnswer(a.id, 'up', myIndex)" href="javascript:void(0);" [style.color]="answerVotes[myIndex].currentUserVote === 'up' ? '#d83431' : null">
+              <i class="fas fa-chevron-up"></i>&nbsp;upvote&nbsp;</a>
+            <a class="not-link" (click)="voteAnswer(a.id, 'down', myIndex)" href="javascript:void(0);" [style.color]="answerVotes[myIndex].currentUserVote === 'down' ? '#d83431' : null">
+              <i class="fas fa-chevron-down" ></i>&nbsp;downvote&nbsp;</a>
+            <a class="not-link" (click)="showReply(myIndex); false;" href="" >
+              <i class="fas fa-comment-dots"></i>&nbsp;reply</a>
           </span><br><br>
 
           <div *ngIf="myIndex === replyToAnswerNo" class="row" style="margin-left: 50px;">
-            <textarea class="reply-area"></textarea>
-            <button type="submit" class="btn yf-submit reply-btn">Reply</button>
+            <textarea class="reply-area" [formControl]="replyCtrl"></textarea>
+            <button type="submit" class="btn yf-submit reply-btn" (click)="addReply(a.id)">Reply</button>
           </div>
 
-          <div *ngFor="let r of a.replies" style="padding:5px;  margin-left: 50px; border-left: #d83431 2px solid;">
+          <div *ngFor="let r of a.replies" style="padding:5px; margin-left: 50px; border-left: #d83431 2px solid;">
             <span>
               {{r.txt}} - &nbsp;<a class="link" href="#">{{r.author.username}}</a>
             </span><br>
           </div>
-          <hr>
+          <br>
         </div>
         <br>
         <h1 class="my-font font-weight-bold">
           Leave an answer:
         </h1>
         <br>
-        <textarea class="answer-area" placeholder="Text here..."></textarea>
-        <button name="submit" class="btn yf-submit" type="submit" (click)="addAnswer(q.id, 'just trying something out')">
+        <textarea class="answer-area" placeholder="Text here..." [formControl]="answerCtrl"></textarea>
+        <button name="submit" class="btn yf-submit" type="submit" (click)="addAnswer()" [disabled]="answerCtrl.hasError('required')">
           Submit
         </button>
       </div>

@@ -1,0 +1,18 @@
+.example-chip-list {
+  width: 75%;
+}
+.example-form {
+  min-width: 150px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-full-width-textarea {
+  width: 100%;
+  min-height: 150px;
+}
+
+

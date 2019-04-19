@@ -12,7 +12,6 @@
 }
 .search-box{
   margin-top: 2px;
-  margin-right: 20%;
   height: 30px;
   padding: 5px;
   border-radius: 5px;
@@ -31,4 +30,22 @@
 }
 .option:hover{
   text-decoration: underline;
+}
+.post-link{
+  height: 30px;
+}
+.pull-right{
+  margin-right: 15%;
+  margin-left: 5%;
+}
+input[type="submit"] {
+  margin-top: 2px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-left: -35px;
+  height: 30px;
+  width: 50px;
+  font-size: 12px;
+  background: #d83431;
+  color: white;
 }

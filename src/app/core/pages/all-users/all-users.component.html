@@ -1,0 +1,22 @@
+<div class="blog-page container">
+  <div class="blog-posts">
+    <h1>
+      <span class="cap-lg pill-lg">Users:</span>
+    </h1>
+    <div class="row blog-post">
+      <div class="blog-post-author col-md-2 text-center" *ngFor="let user of users">
+        <a href="#">
+          <i style="background-image: url(../../../../assets/images/knuck.jpg);"></i>
+          <span>
+            <b>{{user.username}}</b> <br>
+            {{user.name}} <br>
+          </span>
+        </a>
+        Tags:
+        <a *ngFor="let tag of user.subscribedToTags">
+          {{tag.name}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

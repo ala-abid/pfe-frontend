@@ -1,5 +1,12 @@
 import { NgModule } from '@angular/core';
-import {MatAutocompleteModule, MatInputModule, MatProgressSpinnerModule, MatRadioModule, MatSelectModule} from '@angular/material';
+import {
+  MatAutocompleteModule,
+  MatChipsModule, MatIconModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatSelectModule, MatTabsModule, MatTooltipModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -8,14 +15,22 @@ import {MatAutocompleteModule, MatInputModule, MatProgressSpinnerModule, MatRadi
     MatSelectModule,
     MatInputModule,
     MatRadioModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatTabsModule
   ],
   exports: [
     MatAutocompleteModule,
     MatSelectModule,
     MatInputModule,
     MatRadioModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule { }

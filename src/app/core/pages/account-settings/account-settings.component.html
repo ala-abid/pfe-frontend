@@ -1,0 +1,60 @@
+<section class="blog-page">
+  <div class="container">
+    <div class="blog-posts">
+      <h1>
+        <span class="cap-lg pill-lg">Account settings:</span>
+      </h1>
+      <br>
+      Watched Tags:<br>
+      <mat-form-field class="example-chip-list">
+        <mat-chip-list #chipList aria-label="Tag selection">
+          <mat-chip
+            *ngFor="let tag of tags"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(tag)">
+            {{tag}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="Choose tags"
+            #tagInput
+            [formControl]="tagCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur">
+          <mat-error *ngIf="tags.length === 0 && tagCtrl.touched">This field is required</mat-error>
+          <!--(matChipInputTokenEnd)="add($event)"> removed cause no long allow user defined values-->
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+            {{tag}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <br>
+      Search preferences: <br><br>
+      <mat-form-field>
+        <mat-label>Field to search</mat-label>
+        <mat-select [formControl]="prefsCtrl">
+          <mat-option value="Titles">Titles</mat-option>
+          <mat-option value="Contents">Contents</mat-option>
+          <mat-option value="Answers">Answers</mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field>
+        <mat-label>Question State</mat-label>
+        <mat-select [formControl]="">
+          <mat-option value="Titles">Solved</mat-option>
+          <mat-option value="Contents">Unsolved</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button name="submit" class="btn yf-submit" type="submit" (click)="save()">
+        Save
+      </button>
+    </div>
+  </div>
+</section>

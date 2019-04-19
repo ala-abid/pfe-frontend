@@ -1,0 +1,77 @@
+<section class="blog-page">
+  <div class="container">
+    <div class="blog-posts">
+      <h1>
+        <span class="cap-lg pill-lg">Advanced search:</span>
+      </h1>
+      <br>
+
+      <mat-spinner class="spinner" color="warn" *ngIf=""></mat-spinner>
+
+      <input type="text" class="search-box" placeholder="Search" aria-label="Number"
+             matInput [formControl]="">
+      <input type="submit" value="Search">
+      <br><br>
+      <b class="lt-24">Jira options:</b>
+      <mat-form-field>
+        <mat-label>Project</mat-label>
+        <mat-select [formControl]="" multiple>
+          <mat-option>Solife</mat-option>
+          <mat-option>Megara</mat-option>
+          <mat-option>Megacor</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="margin-left: 20px">
+        <mat-label>Issue Type</mat-label>
+        <mat-select [formControl]="" multiple>
+          <mat-option>Bug</mat-option>
+          <mat-option>Feature</mat-option>
+          <mat-option>Task</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="margin-left: 20px">
+        <mat-label>Status</mat-label>
+        <mat-select [formControl]="" multiple>
+          <mat-option>OPEN</mat-option>
+          <mat-option>CLOSED</mat-option>
+          <mat-option>In progress</mat-option>
+          <mat-option>Done</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <b class="lt-24">Forum options:</b>
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select [formControl]="" multiple>
+          <mat-option>Solved</mat-option>
+          <mat-option>Unsolved</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="margin-left: 20px">
+        <mat-label>Has tags</mat-label>
+        <mat-select [formControl]="" multiple>
+          <mat-option>Spring</mat-option>
+          <mat-option>OST</mat-option>
+          <mat-option>RFP</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="margin-left: 20px">
+        <mat-label>Search fields</mat-label>
+        <mat-select [formControl]="" multiple>
+          <mat-option>Title</mat-option>
+          <mat-option>Body</mat-option>
+          <mat-option>Answers</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field style="margin-left: 20px">
+        <mat-label>Order by</mat-label>
+        <mat-select [formControl]="" multiple>
+          <mat-option>Date</mat-option>
+          <mat-option>Up Votes</mat-option>
+          <mat-option>Most relevant</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</section>

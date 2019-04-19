@@ -451,7 +451,7 @@ hr {
   margin-bottom:40px;
   padding-bottom: 20px;
 }
-.blog-page .blog-posts .blog-post .blog-post-summary .post-link {
+.post-link {
   display: inline-block;
   font-family: "karla-bold";
   font-size: 14px;
@@ -513,7 +513,7 @@ hr {
   color: #d83431;
 }
 
-.blog-page .blog-posts .blog-post .blog-post-summary .post-link:hover {
+.post-link:hover {
   background-color: #d83431;
   color: #fff;
   border: 2px solid #d83431;
@@ -1285,7 +1285,7 @@ Text/Titles
 .cap-lg {
   display: inline-block;
   font-family: "karla-bold";
-  font-size: 50px;
+  font-size: 40px;
   color: #343434;
   text-transform: uppercase;
   z-index: 1;
