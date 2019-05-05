@@ -1,5 +1,10 @@
 <div class="blog-page container">
   <div class="blog-posts">
+    <br><br>
+    <div style="float: right; margin-top: 10px" *ngIf="q && q.author.username === storageService.retrieve('username')">
+      <button (click)="false;" style="background-color: #f9f9f9 "> <mat-icon>edit</mat-icon> </button>
+      <button (click)="openDialog();" style="background-color: #f9f9f9 "> <mat-icon>delete</mat-icon> </button>
+    </div>
     <div class="row blog-post" *ngIf="q && currentVote">
       <a href="#" class="blog-post-author col-md-2 text-center">
         <i style="background-image: url(../../../../assets/images/knuck.jpg);"></i>
@@ -73,6 +78,21 @@
         </button>
       </div>
     </div>
-  </div>
+    <div class="home-news">
+      <span class="cap-18 pill pill-center">Related questions</span>
 
+      <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0;">
+        <div class="blog">
+          <div class="ns-wrap">
+            <a [routerLink]="['/question', relQ.id]" class="blog-box" *ngFor="let relQ of relatedQs">
+              <h3 class="cap-16">{{relQ.title}}</h3>
+              <p class="blog-summary">
+                {{relQ.txt}}
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

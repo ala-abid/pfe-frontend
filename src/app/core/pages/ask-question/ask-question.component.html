@@ -2,7 +2,7 @@
   <div class="container">
     <div class="blog-posts">
       <h1>
-        <span class="cap-lg pill-lg">Create post:</span>
+        <span class="cap-lg pill-lg">Create post</span>
       </h1>
       <br>
       <mat-form-field class="example-chip-list">
@@ -33,23 +33,36 @@
         </mat-autocomplete>
       </mat-form-field>
 
+      <mat-slide-toggle color="warn" [checked]="toggleChecked" (change)="changeToggleCheckedState()"> Public</mat-slide-toggle>
+
+      <mat-form-field style="margin-left: 15px;">
+        <mat-label>Group</mat-label>
+        <mat-select [formControl]="GrpCtrl">
+          <mat-option [value]="group.id" *ngFor="let group of groupsMemberOf">{{group.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
 
       <br>
 
       <form class="example-form">
         <mat-form-field class="example-full-width">
-          <input matInput [formControl]="titleCtrl" placeholder="Title">
+          <input #titleTag matInput [formControl]="titleCtrl" placeholder="Title">
           <mat-error *ngIf="titleCtrl.hasError('required')">This field is required</mat-error>
           <mat-error *ngIf="titleCtrl.hasError('minlength')">Minimum 6 characters</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width-textarea">
-          <textarea matInput [formControl]="txtCtrl" placeholder="Text" class="example-full-width-textarea"></textarea>
+          <textarea #txtTag matInput [formControl]="txtCtrl" placeholder="Text" class="example-full-width-textarea"></textarea>
         </mat-form-field>
+
+        <span *ngIf="suggestedTags.length > 0"> Recommended tags: </span>
+        <span *ngFor="let tag of suggestedTags"> &nbsp;- &nbsp; <a  (click)="addFromRecommended(tag.name)" [routerLink]="">{{tag.name}}</a></span>
+
       </form>
 
       <button name="submit" class="btn yf-submit" style="margin-left: 45%" type="submit"
-              (click)="createQuestion()" [disabled]="!titleCtrl.valid || tags.length === 0">
+              (click)="createQuestion()" [disabled]="!titleCtrl.valid || tags.length === 0 || GrpCtrl.hasError('required')">
         Submit
       </button>
 

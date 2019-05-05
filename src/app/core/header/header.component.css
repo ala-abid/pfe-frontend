@@ -35,7 +35,7 @@
   height: 30px;
 }
 .pull-right{
-  margin-right: 15%;
+  margin-right: 10%;
   margin-left: 5%;
 }
 input[type="submit"] {
@@ -48,4 +48,8 @@ input[type="submit"] {
   font-size: 12px;
   background: #d83431;
   color: white;
+}
+
+.sticky-top{
+  z-index: 999;
 }

@@ -11,6 +11,7 @@ import {AdvancedSearchComponent} from './core/pages/advanced-search/advanced-sea
 import {AccountSettingsComponent} from './core/pages/account-settings/account-settings.component';
 import {MyGroupsComponent} from './core/pages/my-groups/my-groups.component';
 import {GroupComponent} from './core/pages/group/group.component';
+import {TagsComponent} from './core/pages/tags/tags.component';
 export const ROUTES: Routes = [
   {path: 'signIn', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
@@ -22,6 +23,7 @@ export const ROUTES: Routes = [
   {path: 'search/:query', component: AdvancedSearchComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: AccountSettingsComponent, canActivate: [AuthGuard]},
   {path: 'groups', component: MyGroupsComponent, canActivate: [AuthGuard]},
+  {path: 'tags', component: TagsComponent, canActivate: [AuthGuard]},
   {path: 'group/:id', component: GroupComponent, canActivate: [AuthGuard]},
 
   {path: '', canActivate: [AuthGuard], redirectTo: 'home', pathMatch: 'full'}

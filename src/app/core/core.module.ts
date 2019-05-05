@@ -15,8 +15,11 @@ import { AskQuestionComponent } from './pages/ask-question/ask-question.componen
 import { AllUsersComponent } from './pages/all-users/all-users.component';
 import { AdvancedSearchComponent } from './pages/advanced-search/advanced-search.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
-import { MyGroupsComponent } from './pages/my-groups/my-groups.component';
-import { GroupComponent } from './pages/group/group.component';
+import {DialogContentExampleDialog2, MyGroupsComponent} from './pages/my-groups/my-groups.component';
+import {DialogOverviewExampleDialog, GroupComponent} from './pages/group/group.component';
+import { TagsComponent } from './pages/tags/tags.component';
+import { TagQuestionsComponent } from './pages/tag-questions/tag-questions.component';
+import {DeleteConfirmationDialogComponent} from '../shared/delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,10 @@ import { GroupComponent } from './pages/group/group.component';
     AccountSettingsComponent,
     MyGroupsComponent,
     GroupComponent,
+    DialogOverviewExampleDialog,
+    DialogContentExampleDialog2,
+    TagsComponent,
+    TagQuestionsComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -46,5 +53,10 @@ import { GroupComponent } from './pages/group/group.component';
     HeaderComponent,
     FooterComponent
   ],
+  entryComponents: [
+    DialogOverviewExampleDialog,
+    DialogContentExampleDialog2,
+    DeleteConfirmationDialogComponent
+  ]
 })
 export class CoreModule { }

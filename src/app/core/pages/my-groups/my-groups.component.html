@@ -1,7 +1,7 @@
 <div class="blog-page container">
   <div class="blog-posts">
     <h1>
-      <span class="cap-lg pill-lg">Groups:</span>
+      <span class="cap-lg pill-lg">Groups</span>
     </h1><br>
     <div class="row blog-post">
       <div class="col-md-6">
@@ -15,5 +15,6 @@
            [routerLink]="['/group', group.id]"> {{group.name}} <br> </a>
       </div>
     </div>
+    <button mat-raised-button (click)="openDialog()"> <mat-icon style="margin-top: -5px">add</mat-icon>New group</button>
   </div>
 </div>

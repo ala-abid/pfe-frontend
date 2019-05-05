@@ -1,11 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {QuestionService} from '../../services/question.service';
 import {Question} from '../../models/Question';
 import {Answer} from '../../models/Answer';
 import {FormControl, Validators} from '@angular/forms';
 import {Reply} from '../../models/Reply';
 import {VoteQ} from '../../models/VoteQ';
+import {HistoryService} from '../../services/history.service';
+import {VisitedPage} from '../../models/VisitedPage';
+import {LocalStorageService} from '../../services/local-storage.service';
+import {MatDialog} from '@angular/material';
+import {DeleteConfirmationDialogComponent} from '../../../shared/delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 class AnswerVote {
   currentUserVote: string;
@@ -27,8 +32,12 @@ export class QuestionComponent implements OnInit {
   currentVote: VoteQ;
   totalVotes: number;
   answerVotes = new Array<AnswerVote>();
+  relatedQs: any[] = [];
 
-  constructor(private route: ActivatedRoute, private questionService: QuestionService) {
+  constructor(private route: ActivatedRoute, private questionService: QuestionService,
+              private router: Router, private history: HistoryService , protected storageService: LocalStorageService,
+              private dialog: MatDialog) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit() {
@@ -37,6 +46,8 @@ export class QuestionComponent implements OnInit {
       .subscribe(
         (data) => {
           this.q = data;
+          this.history.addToHistory(new VisitedPage(this.router.url, this.q.title));
+          console.log(this.history.lastVisited);
           this.questionService.getVoteForCurrentUser(this.qId)
             .subscribe(
               value => {
@@ -70,6 +81,10 @@ export class QuestionComponent implements OnInit {
         },
         (err) => console.log(err)
       );
+    this.questionService.getRelatedQuestions(this.qId).subscribe(
+      (value: any[]) => this.relatedQs = value,
+      error1 => console.log(error1)
+    );
   }
 
   showReply(myIndex: number) {
@@ -152,5 +167,21 @@ export class QuestionComponent implements OnInit {
         console.log(error1);
       }
     );
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Do you confirm the deletion of this question?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Yes clicked');
+        this.questionService.deleteQuestion(this.qId).subscribe(
+          (value: string) => this.router.navigateByUrl('/home'),
+          error1 => console.log(error1)
+        );
+      }
+    });
   }
 }

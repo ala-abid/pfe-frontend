@@ -31,4 +31,9 @@ export class UserService {
   saveSubscribedTags(tagIds: number[]){
     return this.http.post(apiBaseUrl + '/user/sub', tagIds);
   }
+
+  getUsersNotInGroup(groupId: number): Observable<User[] >{
+    return this.http.get<User[]>(apiBaseUrl + '/user/usersNotInGroup/' + groupId);
+  }
+
 }

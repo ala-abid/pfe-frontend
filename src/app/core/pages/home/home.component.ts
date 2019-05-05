@@ -3,6 +3,8 @@ import {QuestionService} from '../../services/question.service';
 import {Question} from '../../models/Question';
 import {Router} from '@angular/router';
 import {VoteQ} from '../../models/VoteQ';
+import {HistoryService} from '../../services/history.service';
+import {VisitedPage} from '../../models/VisitedPage';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +15,11 @@ export class HomeComponent implements OnInit {
 
   questions: Question[];
   currentVotes = new Array<number>();
-  constructor( private questionService: QuestionService, private router: Router) {
+  constructor( private questionService: QuestionService, private router: Router, private hist: HistoryService) {
   }
   ngOnInit() {
-    this.questionService.getAllQuestions().subscribe(
+    this.hist.addToHistory(new VisitedPage(this.router.url, 'Home'));
+    this.questionService.getQuestionsPerCurrentUserTags().subscribe(
       data => {
         this.questions = data;
         this.questions.forEach(

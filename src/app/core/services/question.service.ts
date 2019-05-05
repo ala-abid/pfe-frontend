@@ -18,6 +18,9 @@ export class QuestionService {
   getAllQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(apiBaseUrl + apiAllQsPath);
   }
+  getQuestionsPerCurrentUserTags(): Observable<Question[]> {
+    return this.http.get<Question[]>(apiBaseUrl + '/question/perCurrentUserTags');
+  }
 
   getQuestion(id: number): Observable<Question> {
     return this.http.get<Question>(apiBaseUrl + '/question/' + id);
@@ -27,8 +30,8 @@ export class QuestionService {
     return this.http.post<Question>(apiBaseUrl + '/question/' + qId + '/addAnswer', content);
   }
 
-  createQuestion(tags: string[], title: string, txt: string) {
-    return this.http.post(apiBaseUrl + '/question/create', {title, txt, tags, groupId: 1});
+  createQuestion(tags: string[], title: string, txt: string, groupId: number) {
+    return this.http.post(apiBaseUrl + '/question/create', {title, txt, tags, groupId});
   }
 
   addReply(aId: number, reply: Reply): Observable<Question> {
@@ -64,6 +67,18 @@ export class QuestionService {
 
   getTotalNoOfVotesAnswer(aId: number) {
     return this.http.get(apiBaseUrl + '/vote/getTotalAnswer/' + aId);
+  }
+
+  getRelatedQuestions(id: number) {
+    return this.http.get(apiBaseUrl + '/moreLikeThis/' + id);
+  }
+
+  getSuggestedTags(title: string, txt: string | 'a') {
+    return this.http.get(apiBaseUrl + '/es/getTagSuggestion/' + title + '/' + txt);
+  }
+
+  deleteQuestion(id: number) {
+    return this.http.delete(apiBaseUrl + '/question/delete/' + id);
   }
 
 }

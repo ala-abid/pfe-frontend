@@ -1,5 +1,6 @@
 .example-chip-list {
-  width: 75%;
+  width: 70%;
+  margin-right: 10px;
 }
 .example-form {
   min-width: 150px;

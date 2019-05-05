@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.usernameOrEmail, this.password).subscribe(
       (resp: any) => {
         this.storageService.store(tokenKey, resp.token);
+        this.storageService.store('username', resp.username);
         this.router.navigateByUrl(homePath);
       },
       () => {

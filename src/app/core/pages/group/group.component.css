@@ -5,3 +5,17 @@ mat-tab-group{
   font-weight: bold;
   color: darkslategrey;
 }
+.mat-raised-button{
+  background-color: #d83431;
+  color: white;
+}
+#xButton {
+  float: right;
+  color: grey;
+  font-weight: bolder;
+  background-color: #f9f9f9;
+}
+.mat-menu-item{
+  height: 30px;
+  line-height: 0;
+}

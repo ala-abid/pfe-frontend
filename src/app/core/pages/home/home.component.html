@@ -2,7 +2,7 @@
   <div class="container">
     <div class="blog-posts">
       <h1>
-        <span class="cap-lg pill-lg">Home:</span>
+        <span class="cap-lg pill-lg">Home</span>
       </h1>
       <div class="row blog-post" *ngFor="let q of questions; let i = index">
         <a href="#" class="blog-post-author col-md-2 text-center">
@@ -24,7 +24,7 @@
 <!--          </div>-->
         </div>
         <div class="blog-post-summary col-md-9">
-          <h6 class="cap-22"><a href="#">{{q.title}}</a></h6>
+          <h6 class="cap-22"><a [routerLink]="['/question', q.id]">{{q.title}}</a></h6>
           <span>{{q.createdAt| date :'dd-MMM-yyyy'}}</span>
           <p class="txt-16">{{q.txt}}<br></p>
           <div class="text-right">

@@ -6,6 +6,7 @@ import {FormControl} from '@angular/forms';
 import {JiraService} from '../services/jira.service';
 import {Subscription} from 'rxjs';
 import {QuestionService} from '../services/question.service';
+import {HistoryService} from '../services/history.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
   forumSearchOptions: any[];
   jiraSubscription: Subscription;
   forumSearchSubscription: Subscription;
-  constructor(private storageService: LocalStorageService, protected router: Router, private jiraService: JiraService, private questionService: QuestionService) {
+  constructor(private storageService: LocalStorageService, protected router: Router, private jiraService: JiraService,
+              private questionService: QuestionService, private historyService: HistoryService) {
 
   }
 
