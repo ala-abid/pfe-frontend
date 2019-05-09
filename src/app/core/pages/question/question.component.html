@@ -2,7 +2,7 @@
   <div class="blog-posts">
     <br><br>
     <div style="float: right; margin-top: 10px" *ngIf="q && q.author.username === storageService.retrieve('username')">
-      <button (click)="false;" style="background-color: #f9f9f9 "> <mat-icon>edit</mat-icon> </button>
+      <button (click)="goToEditPage();" style="background-color: #f9f9f9 "> <mat-icon>edit</mat-icon> </button>
       <button (click)="openDialog();" style="background-color: #f9f9f9 "> <mat-icon>delete</mat-icon> </button>
     </div>
     <div class="row blog-post" *ngIf="q && currentVote">

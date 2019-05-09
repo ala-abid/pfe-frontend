@@ -81,4 +81,8 @@ export class QuestionService {
     return this.http.delete(apiBaseUrl + '/question/delete/' + id);
   }
 
+  editQuestion(id: number, txt: string, title: string, tags: string[]){
+    return this.http.post(apiBaseUrl + '/question/' + id + '/edit', {title, txt, tags});
+  }
+
 }

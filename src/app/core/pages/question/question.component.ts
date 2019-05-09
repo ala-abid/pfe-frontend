@@ -184,4 +184,8 @@ export class QuestionComponent implements OnInit {
       }
     });
   }
+
+  goToEditPage(){
+    this.router.navigateByUrl('/question/' + this.qId + '/edit');
+  }
 }

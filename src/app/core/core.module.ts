@@ -20,6 +20,7 @@ import {DialogOverviewExampleDialog, GroupComponent} from './pages/group/group.c
 import { TagsComponent } from './pages/tags/tags.component';
 import { TagQuestionsComponent } from './pages/tag-questions/tag-questions.component';
 import {DeleteConfirmationDialogComponent} from '../shared/delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { EditQuestionComponent } from './pages/edit-question/edit-question.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {DeleteConfirmationDialogComponent} from '../shared/delete-confirmation-d
     DialogOverviewExampleDialog,
     DialogContentExampleDialog2,
     TagsComponent,
-    TagQuestionsComponent
+    TagQuestionsComponent,
+    EditQuestionComponent
   ],
   imports: [
     ReactiveFormsModule,
