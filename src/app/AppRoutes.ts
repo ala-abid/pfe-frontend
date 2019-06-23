@@ -16,6 +16,7 @@ import {EditQuestionComponent} from './core/pages/edit-question/edit-question.co
 export const ROUTES: Routes = [
   {path: 'signIn', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'questions/tagged/:id/:tagName', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'signUp', component: RegisterComponent, canActivate: [AuthGuard]},
   {path: 'question/:id', component: QuestionComponent, canActivate: [AuthGuard]},
   {path: 'question/:id/edit', component: EditQuestionComponent, canActivate: [AuthGuard]},

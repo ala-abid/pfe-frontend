@@ -188,4 +188,11 @@ export class QuestionComponent implements OnInit {
   goToEditPage(){
     this.router.navigateByUrl('/question/' + this.qId + '/edit');
   }
+
+  markAsSolution(aId: number) {
+    this.questionService.markAnswerAsSolution(aId).subscribe(
+      (value) => this.q = value,
+      error1 => console.error(error1)
+    );
+  }
 }

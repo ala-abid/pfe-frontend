@@ -12,66 +12,175 @@
              matInput [formControl]="">
       <input type="submit" value="Search">
       <br><br>
-      <b class="lt-24">Jira options:</b>
-      <mat-form-field>
-        <mat-label>Project</mat-label>
-        <mat-select [formControl]="" multiple>
-          <mat-option>Solife</mat-option>
-          <mat-option>Megara</mat-option>
-          <mat-option>Megacor</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field style="margin-left: 20px">
-        <mat-label>Issue Type</mat-label>
-        <mat-select [formControl]="" multiple>
-          <mat-option>Bug</mat-option>
-          <mat-option>Feature</mat-option>
-          <mat-option>Task</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field style="margin-left: 20px">
-        <mat-label>Status</mat-label>
-        <mat-select [formControl]="" multiple>
-          <mat-option>OPEN</mat-option>
-          <mat-option>CLOSED</mat-option>
-          <mat-option>In progress</mat-option>
-          <mat-option>Done</mat-option>
-        </mat-select>
-      </mat-form-field>
 
-      <b class="lt-24">Forum options:</b>
+<!--      <b class="lt-24">Jira options:</b>-->
+<!--      <mat-form-field>-->
+<!--        <mat-label>Project</mat-label>-->
+<!--        <mat-select [formControl]="" multiple>-->
+<!--          <mat-option>Solife</mat-option>-->
+<!--          <mat-option>Megara</mat-option>-->
+<!--          <mat-option>Megacor</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field style="margin-left: 20px">-->
+<!--        <mat-label>Issue Type</mat-label>-->
+<!--        <mat-select [formControl]="" multiple>-->
+<!--          <mat-option>Bug</mat-option>-->
+<!--          <mat-option>Feature</mat-option>-->
+<!--          <mat-option>Task</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field style="margin-left: 20px">-->
+<!--        <mat-label>Status</mat-label>-->
+<!--        <mat-select [formControl]="" multiple>-->
+<!--          <mat-option>OPEN</mat-option>-->
+<!--          <mat-option>CLOSED</mat-option>-->
+<!--          <mat-option>In progress</mat-option>-->
+<!--          <mat-option>Done</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+
+      <b class="lt-24">search options:</b>
       <mat-form-field>
         <mat-label>Status</mat-label>
-        <mat-select [formControl]="" multiple>
-          <mat-option>Solved</mat-option>
-          <mat-option>Unsolved</mat-option>
+        <mat-select [formControl]="status" multiple>
+          <mat-option value="solved" >Solved</mat-option>
+          <mat-option value="unsolved" >Unsolved</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field style="margin-left: 20px">
         <mat-label>Has tags</mat-label>
-        <mat-select [formControl]="" multiple>
+        <mat-select [formControl]="tags" multiple >
           <mat-option>Spring</mat-option>
-          <mat-option>OST</mat-option>
+          <mat-option>Angular</mat-option>
           <mat-option>RFP</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field style="margin-left: 20px">
         <mat-label>Search fields</mat-label>
-        <mat-select [formControl]="" multiple>
-          <mat-option>Title</mat-option>
+        <mat-select [formControl]="searchField" multiple>
+          <mat-option value = "title">Title</mat-option>
           <mat-option>Body</mat-option>
           <mat-option>Answers</mat-option>
         </mat-select>
       </mat-form-field>
-      <br>
       <mat-form-field style="margin-left: 20px">
         <mat-label>Order by</mat-label>
-        <mat-select [formControl]="" multiple>
-          <mat-option>Date</mat-option>
+        <mat-select [formControl]="sortBy">
+          <mat-option value="Date">Date</mat-option>
           <mat-option>Up Votes</mat-option>
           <mat-option>Most relevant</mat-option>
         </mat-select>
       </mat-form-field>
+
+      <div>
+        <ul>
+          <div class="row">
+            <div class="col-md-3">
+              Question <br>
+              Votes: 1 <br>
+              Answers: 2<br>
+              by <span class="gras">ala</span>
+            </div>
+            <div class="col-md-9">
+              <a href="#d"> Angular Dependency Providers  </a>
+              <p>
+
+
+                I have a service with parameter PATH and I to need set this parameter when I set this service in providers of module.
+
+                When I <strong>inject</strong> this service in some component of this module and I call any of the methods of that service, the parameter PATH will already be set.
+
+                I followed this doc https://angular.io/guide/<strong>dependency-injection</strong>-providers but it didn't help me.              </p>
+              <mat-chip-list>
+                <mat-chip>Angular</mat-chip>
+              </mat-chip-list>
+            </div>
+          </div>
+          <br> <br>
+          <div class="row">
+            <div class="col-md-3">
+              Question <br>
+              Votes: 3 <br>
+              Answers: 1<br>
+              by <span class="gras">hassan</span>
+            </div>
+            <div class="col-md-9">
+              <a href="#d"> Could not autowire field:RestTemplate in Spring boot application   </a>
+              <p>
+                I am getting below exception while running spring boot application during start up: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'testController': <strong>Injection</strong> … [org.springframework.web.client.RestTemplate] found for <strong>dependency</strong>: expected at least 1 bean which qualifies as autowire candidate for this <strong>dependency</strong>.
+              </p>
+              <mat-chip-list>
+                <mat-chip>Spring</mat-chip>
+                <mat-chip>Spring Boot</mat-chip>
+              </mat-chip-list>
+            </div>
+          </div>
+          <br><br>
+          <div class="row">
+            <div class="col-md-3">
+              Answer <br>
+              Votes: 30 <br>
+              by <span class="gras">daliA</span>
+            </div>
+            <div class="col-md-9">
+              <a href="#d"> What is dependency injection?   </a>
+              <p>
+
+
+                <strong>Dependency Injection</strong> is passing <strong>dependency</strong> to other objects or framework( <strong>dependency injector</strong>). <strong>Dependency injection</strong> makes testing easier. The <strong>injection</strong> can be done through constructor. SomeClass … (MyClass myObject)  this.myObject = myObject;  myObject can be passed directly which makes testing easier. One common alternative is defining a do-nothing constructor. <strong>Dependency injection</strong>...               </p>
+            </div>
+          </div>
+          <br><br>
+          <div class="row">
+            <div class="col-md-3">
+              Question <br>
+              Votes: 5 <br>
+              Answers: 2<br>
+              by <span class="gras">ala</span>
+            </div>
+            <div class="col-md-9">
+              <a href="#d"> Inversion of Control vs Dependency Injection  </a>
+              <p>
+
+
+                other than the <strong>Dependency Injection</strong> pattern (Archive link) Additional reading to understand what's the problem with old Component-Based Development Framework, which leads to the second paper above: Why … of view that DI is IOC, means the <strong> dependency</strong> of an object is inverted: instead it controls its own <strong>dependencies</strong>, life cycle... something else does it for you. But, as you told me about DI by hands …               </p>
+              <mat-chip-list>
+                <mat-chip>Angular</mat-chip>
+                <mat-chip>IOC</mat-chip>
+              </mat-chip-list>
+            </div>
+          </div>
+          <br><br>
+          <div class="row">
+            <div class="col-md-3">
+              Answer <br>
+              Votes: 1 <br>
+              by <span class="gras">moezz</span>
+            </div>
+            <div class="col-md-9">
+              <a href="#d"> Circular dependency with Angular 2 and SystemJS   </a>
+              <p>
+
+
+
+
+                You can workaround circular <strong>dependencies</strong> by <strong>injecting Injector</strong> instead of one of the services that cause the circular <strong>dependency</strong>
+
+                private payrollService:PayrollService;
+                constructor(/*private payrollService:PayrollService*/ <strong>injector:Injector</strong>) {{'{'}}
+                setTimeout(() => this.payrollService = injector.get(PayrollService));
+
+
+              </p>
+            </div>
+          </div>
+        </ul>
+      </div>
+
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)">
+      </mat-paginator>
     </div>
   </div>
 </section>
+

@@ -6,11 +6,12 @@
     <br>
     <div class="row blog-post">
       <div class="col-md-2" *ngFor="let tag of tags">
-        <a [routerLink]="['/tag', tag.id]"> {{tag.name}} </a> <br>
+        <a [routerLink]="['/questions/tagged/', tag.id, tag.name]"> {{tag.name}} </a> <br>
         <p style="font-size: 12px">
           {{tag.description}}
         </p>
       </div>
     </div>
+    <button mat-raised-button (click)="openDialog()"> <mat-icon style="margin-top: -5px">add</mat-icon>Add a new tag</button>
   </div>
 </div>

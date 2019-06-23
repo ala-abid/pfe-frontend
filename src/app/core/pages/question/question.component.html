@@ -44,8 +44,11 @@
       <div class="col-md-3"></div>
       <div *ngIf="q" class="col-md-9">
         <div *ngFor="let a of q.answers; index as myIndex" class="container answer">
-          <span><a class="link" href="#">{{a.author.username}}</a> &nbsp; {{a.createdAt| date :'dd-MMM-yyyy'}}</span><br><br>
-          <p>{{a.txt}}</p>
+          <span><a class="link" href="#">{{a.author.username}}</a> &nbsp; {{a.createdAt| date :'dd-MMM-yyyy'}}
+            <mat-icon *ngIf="!a.solution && q.author.username === storageService.retrieve('username')" (click)="markAsSolution(a.id)" class="solved-ico">check_circle_outline</mat-icon>
+            <mat-icon *ngIf="a.solution && q.author.username" (click)="markAsSolution(a.id)" class="solved-ico">check_circle</mat-icon>
+          </span><br><br>
+          <p class="txt-16">{{a.txt}}</p>
           <span *ngIf="answerVotes[myIndex]"> {{answerVotes[myIndex].totalVotes}} &nbsp;
             <a class="not-link" (click)="voteAnswer(a.id, 'up', myIndex)" href="javascript:void(0);" [style.color]="answerVotes[myIndex].currentUserVote === 'up' ? '#d83431' : null">
               <i class="fas fa-chevron-up"></i>&nbsp;upvote&nbsp;</a>
@@ -78,7 +81,7 @@
         </button>
       </div>
     </div>
-    <div class="home-news">
+    <div class="home-news" *ngIf="q">
       <span class="cap-18 pill pill-center">Related questions</span>
 
       <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0;">
@@ -94,5 +97,6 @@
         </div>
       </div>
     </div>
+    <span *ngIf="!q">Question doesn't exist.</span>
   </div>
 </div>

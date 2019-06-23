@@ -17,8 +17,7 @@ import { AdvancedSearchComponent } from './pages/advanced-search/advanced-search
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import {DialogContentExampleDialog2, MyGroupsComponent} from './pages/my-groups/my-groups.component';
 import {DialogOverviewExampleDialog, GroupComponent} from './pages/group/group.component';
-import { TagsComponent } from './pages/tags/tags.component';
-import { TagQuestionsComponent } from './pages/tag-questions/tag-questions.component';
+import {AddTagDialogComponent, TagsComponent} from './pages/tags/tags.component';
 import {DeleteConfirmationDialogComponent} from '../shared/delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { EditQuestionComponent } from './pages/edit-question/edit-question.component';
 
@@ -39,8 +38,8 @@ import { EditQuestionComponent } from './pages/edit-question/edit-question.compo
     GroupComponent,
     DialogOverviewExampleDialog,
     DialogContentExampleDialog2,
+    AddTagDialogComponent,
     TagsComponent,
-    TagQuestionsComponent,
     EditQuestionComponent
   ],
   imports: [
@@ -58,6 +57,7 @@ import { EditQuestionComponent } from './pages/edit-question/edit-question.compo
   entryComponents: [
     DialogOverviewExampleDialog,
     DialogContentExampleDialog2,
+    AddTagDialogComponent,
     DeleteConfirmationDialogComponent
   ]
 })

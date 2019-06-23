@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {apiAllQsPath, apiBaseUrl, searchPrefs} from '../../AppConstants';
 import {Observable} from 'rxjs';
 import {Question} from '../models/Question';
@@ -83,6 +83,14 @@ export class QuestionService {
 
   editQuestion(id: number, txt: string, title: string, tags: string[]){
     return this.http.post(apiBaseUrl + '/question/' + id + '/edit', {title, txt, tags});
+  }
+
+  getQuestionstagged(tagId: number): Observable<Question[]> {
+    return this.http.get<Question[]>(apiBaseUrl + '/question/tagged/' + tagId);
+  }
+
+  markAnswerAsSolution(answerId: number): Observable<Question> {
+    return this.http.get<Question>(apiBaseUrl + '/answer/' + answerId + '/markAsSolution');
   }
 
 }

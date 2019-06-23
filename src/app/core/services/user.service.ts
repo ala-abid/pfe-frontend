@@ -36,4 +36,6 @@ export class UserService {
     return this.http.get<User[]>(apiBaseUrl + '/user/usersNotInGroup/' + groupId);
   }
 
+
+
 }

@@ -32,7 +32,8 @@ export class GroupComponent implements OnInit {
   admins: string[];
 
   constructor(private route: ActivatedRoute, private groupService: GroupService,
-              private userService: UserService, private dialog: MatDialog, protected storageService: LocalStorageService) { }
+              private userService: UserService, private dialog: MatDialog, protected storageService: LocalStorageService) {
+  }
 
   ngOnInit() {
     this.groupId = +this.route.snapshot.paramMap.get('id');
@@ -82,6 +83,25 @@ export class GroupComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+  removeUser(id: number) {
+    this.groupService.removeUser(id, this.groupId).subscribe(
+      (value: Group) => this.users = value.users,
+      error1 => console.log(error1)
+    );
+  }
+  makeAdmin(userId, groupId){
+    this.groupService.makeAdmin(userId, groupId).subscribe(
+      (value: Group) => this.admins = value.admins.map(admin => admin.username),
+      error1 => console.log(error1)
+    );
+  }
+  removeAdmin(userId, groupId){
+    this.groupService.removeAdmin(userId, groupId).subscribe(
+      (value: Group) => this.admins = value.admins.map(admin => admin.username),
+      error1 => console.log(error1)
+    );
+  }
 }
 
 @Component({
@@ -97,7 +117,8 @@ export class DialogOverviewExampleDialog implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private userService: UserService, private grpService: GroupService) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private userService: UserService, private grpService: GroupService) {
+  }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
@@ -109,23 +130,28 @@ export class DialogOverviewExampleDialog implements OnInit {
     this.userService.getUsersNotInGroup(this.data.groupId).subscribe(
       value => {
         this.usersNotInGroup = value;
-        this.usersNotInGroupNames = this.usersNotInGroup.map( value1 => value1.username);
+        this.usersNotInGroupNames = this.usersNotInGroup.map(value1 => value1.username);
       },
       error1 => console.log(error1)
     );
   }
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
     return this.usersNotInGroupNames.filter(option => option.toLowerCase().includes(filterValue));
   }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
+
   addUser() {
     let userId = 0;
     this.usersNotInGroup.forEach(value => {
-      if (value.username === this.myControl.value.toString()) userId = value.id;
+      if (value.username === this.myControl.value.toString()) {
+        userId = value.id;
+      }
     });
     this.grpService.addUser(this.data.groupId, userId).subscribe(
       value => this.dialogRef.close(),

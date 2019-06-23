@@ -1,7 +1,7 @@
 <div class="blog-page container">
   <div class="blog-posts">
     <h1>
-      <span class="cap-lg pill-lg" *ngIf="group">{{group.name}}:</span>
+      <span *ngIf="group" class="cap-lg pill-lg">{{group.name}}</span>
     </h1><br>
     <div class="row blog-post">
       <mat-tab-group>
@@ -21,17 +21,7 @@
                   <b>{{q.author.username}}</b><br>author desc
                 </span>
               </a>
-              <div class="col-md-1">
-                <div class="row justify-content-center">
-                  <a (click)="false" href="" class="link"><i class="far fa-arrow-alt-circle-up fa-2x vote-arrow"></i></a>
-                </div>
-                <div class="row justify-content-center">
-                  <b>{{q.upVotes - q.downVotes}}</b>
-                </div>
-                <div class="row justify-content-center">
-                  <a (click)="false" href="" class="link"><i class="far fa-arrow-alt-circle-down fa-2x vote-arrow"></i></a>
-                </div>
-              </div>
+
               <div class="blog-post-summary col-md-9">
                 <h6 class="cap-22"><a href="#">{{q.title}}</a></h6>
                 <span>{{q.createdAt| date :'dd-MMM-yyyy'}}</span>
@@ -52,14 +42,24 @@
           </ng-template>
           <br>
 
-          <button mat-raised-button (click)="openDialog()" class="float-right"><mat-icon>group_add</mat-icon> Add member</button> <br><br>
+          <button (click)="openDialog()" class="float-right" mat-raised-button>
+            <mat-icon>group_add</mat-icon>
+            Add member
+          </button>
+          <br><br>
 
           <div class="row" style="width: 98%">
-            <div class="blog-post-author col-md-2 text-center" *ngFor="let user of users">
-              <button id="xButton" [matMenuTriggerFor]="menu" *ngIf="admins.indexOf(storageService.retrieve('username'))>-1"> ••• </button>
+            <div *ngFor="let user of users" class="blog-post-author col-md-2 text-center">
+              <button *ngIf="admins && admins.indexOf(storageService.retrieve('username'))>-1" [matMenuTriggerFor]="menu"
+                      id="xButton"> •••
+              </button>
+              <span id="badge" *ngIf="admins.indexOf(user.username)>-1">A</span>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item >Remove from group</button>
-                <button mat-menu-item >Make admin</button>
+                <button (click)="removeUser(user.id)" mat-menu-item>Remove from group</button>
+                <button mat-menu-item (click)="makeAdmin(user.id, groupId)" *ngIf="admins.indexOf(user.username)<0; else rmAdm">Make admin</button>
+                <ng-template #rmAdm>
+                  <button mat-menu-item (click)="removeAdmin(user.id, groupId) ">Remove admin</button>
+                </ng-template>
               </mat-menu>
               <a href="#">
                 <i style="background-image: url(../../../../assets/images/knuck.jpg);"></i>
@@ -90,3 +90,4 @@
     </div>
   </div>
 </div>
+

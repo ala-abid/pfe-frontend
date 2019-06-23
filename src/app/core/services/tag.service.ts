@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Tag} from '../models/Tag';
 import {apiBaseUrl} from '../../AppConstants';
-import {Question} from '../models/Question';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class TagService {
     return this.http.get<Tag[]>(apiBaseUrl + '/tag/all');
   }
 
-  getQuestionsPerTag(tagId: number) : Observable<Question[]> {
-    return this.http.get<Question[]>(apiBaseUrl + 'tag/' + tagId + 'questions');
+  createTag(name: string, description: string): Observable<Tag> {
+    return this.http.post<Tag>(apiBaseUrl + '/tag/create', {name, description});
   }
 }

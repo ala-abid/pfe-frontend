@@ -32,4 +32,15 @@ export class GroupService {
   createGroup(name: string, description: string) {
     return this.http.get(apiBaseUrl + '/group/create/' + name + '/' + description);
   }
+
+  removeUser(userId: number, groupId: number) {
+    return this.http.delete(apiBaseUrl + '/group/' + groupId + '/deleteUser/' + userId);
+  }
+
+  makeAdmin(adminId: number, groupId: number) {
+    return this.http.get(apiBaseUrl + '/group/' + groupId + '/addAdmin/' + adminId);
+  }
+  removeAdmin(adminId: number, groupId: number) {
+    return this.http.delete(apiBaseUrl + '/group/' + groupId + '/deleteAdmin/' + adminId);
+  }
 }

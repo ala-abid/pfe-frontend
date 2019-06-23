@@ -15,6 +15,16 @@ mat-tab-group{
   font-weight: bolder;
   background-color: #f9f9f9;
 }
+#badge {
+  margin-right: 5px;
+  float: right;
+  color: white;
+  font-weight: bolder;
+  background-color: #721c24;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+}
 .mat-menu-item{
   height: 30px;
   line-height: 0;
